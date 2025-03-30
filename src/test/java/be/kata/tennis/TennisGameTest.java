@@ -52,14 +52,14 @@ public class TennisGameTest {
 
     @Test
     void whenPlayer2Scores2Points_ThenScoreIsLoveThirty() {
-        simulateTennisGame(2,0);
+        simulateTennisGame(0,2);
 
         assertThat(tennisGame.getScore()).isEqualTo("Love - Thirty");
     }
 
     @Test
     void whenPlayer2Scores3Points_ThenScoreIsLoveForty() {
-        simulateTennisGame(2,0);
+        simulateTennisGame(0,3);
 
         assertThat(tennisGame.getScore()).isEqualTo("Love - Forty");
     }

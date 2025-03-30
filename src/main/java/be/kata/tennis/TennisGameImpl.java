@@ -8,7 +8,7 @@ public class TennisGameImpl implements TennisGame {
 
     TennisGameImpl(String player1Name, String player2Name) {
         this.player1Name = player1Name;
-        this.player2Name = player1Name;
+        this.player2Name = player2Name;
     }
 
     @Override
