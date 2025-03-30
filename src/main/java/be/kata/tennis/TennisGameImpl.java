@@ -51,8 +51,10 @@ public class TennisGameImpl implements TennisGame {
             player1.addPoint();
         } else if (scoringPlayerName.equals(player2.getName())) {
             player2.addPoint();
+        } else {
+            throw new IllegalArgumentException(String.format("Player with name %s is currently not playing", scoringPlayerName));
         }
-        throw new IllegalArgumentException(String.format("Player with name %s is currently not playing", scoringPlayerName));
+
     }
 
     private String mapPlayerScoreToText(int playerScore) {
