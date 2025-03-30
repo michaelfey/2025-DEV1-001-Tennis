@@ -128,6 +128,20 @@ public class TennisGameTest {
         assertThat(tennisGame.getScore()).isEqualTo("Win for Gustavo Fring");
     }
 
+    @Test
+    void whenPlayer1Scores4PointsWithoutDeuce_thenPlayer1Wins() {
+        simulateTennisGame(4, 2);
+
+        assertThat(tennisGame.getScore()).isEqualTo("Win for Gustavo");
+    }
+
+    @Test
+    void whenPlayer2Scores4PointsWithoutDeuce_thenPlayer2Wins() {
+        simulateTennisGame(1, 4);
+
+        assertThat(tennisGame.getScore()).isEqualTo("Win for Heisenberg");
+    }
+
     private void simulateTennisGame(int player1Points, int player2Points) {
         IntStream.range(0, player1Points).forEach(i -> tennisGame.scorePoint(PLAYER_1));
         IntStream.range(0, player2Points).forEach(i -> tennisGame.scorePoint(PLAYER_2));
