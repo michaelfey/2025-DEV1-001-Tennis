@@ -14,6 +14,9 @@ public class TennisGameImpl implements TennisGame {
     @Override
     public String getScore() {
         String scoreBoard = "%s - %s";
+        if(player1Score == player2Score && player1Score == 3) {
+            return "Deuce";
+        }
         String player1Score = mapPlayerScoreToText(this.player1Score);
         String player2Score = mapPlayerScoreToText(this.player2Score);
         return String.format(scoreBoard, player1Score, player2Score);
