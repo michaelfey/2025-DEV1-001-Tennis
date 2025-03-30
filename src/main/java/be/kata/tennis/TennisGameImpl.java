@@ -18,12 +18,12 @@ public class TennisGameImpl implements TennisGame {
 
     @Override
     public String getScore() {
-        List<ScoreState> scoreStates = Arrays.asList(new AdvantageScoreState(), new WinningScore(), new DeuceScoreState(), new NumericScoreState());
-        ScoreState currentScoreState = scoreStates.stream()
+        List<Score> scores = Arrays.asList(new AdvantageScore(), new WinningScore(), new DeuceScore(), new NumericScore());
+        Score currentScore = scores.stream()
                 .filter(scoreState -> scoreState.test(players))
                 .findFirst()
                 .orElseThrow(() -> new IllegalStateException("No score found"));
-        return currentScoreState.getScore(players);
+        return currentScore.getValue(players);
     }
 
     @Override

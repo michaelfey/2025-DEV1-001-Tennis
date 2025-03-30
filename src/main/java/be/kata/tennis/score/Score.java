@@ -2,7 +2,7 @@ package be.kata.tennis.score;
 
 import be.kata.tennis.Players;
 
-public interface ScoreState {
+public interface Score {
     boolean test(Players players);
-    String getScore(Players players);
+    String getValue(Players players);
 }
