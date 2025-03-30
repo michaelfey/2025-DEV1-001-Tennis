@@ -4,8 +4,8 @@ import org.apache.commons.lang3.StringUtils;
 
 public class TennisGameImpl implements TennisGame {
     private static final String SCORE_BOARD = "%s - %s";
-    private Player player1;
-    private Player player2;
+    private final Player player1;
+    private final Player player2;
 
 
     TennisGameImpl(String player1Name, String player2Name) {
