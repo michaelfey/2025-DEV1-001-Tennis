@@ -26,7 +26,7 @@ public class TennisGameImpl implements TennisGame {
     }
 
     private boolean hasAdvantage() {
-        return Math.max(player1Score, player2Score) == 4 && Math.abs(player1Score - player2Score) == 1;
+        return Math.max(player1Score, player2Score) >= 4 && Math.abs(player1Score - player2Score) == 1;
     }
 
     private String leadingPlayer() {
@@ -49,6 +49,6 @@ public class TennisGameImpl implements TennisGame {
     }
 
     private boolean isDeuce() {
-        return player1Score == player2Score && player1Score == 3;
+        return player1Score == player2Score && player1Score >= 3;
     }
 }
