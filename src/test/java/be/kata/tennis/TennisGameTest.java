@@ -132,14 +132,14 @@ public class TennisGameTest {
     void whenPlayer1Scores4PointsWithoutDeuce_thenPlayer1Wins() {
         simulateTennisGame(4, 2);
 
-        assertThat(tennisGame.getScore()).isEqualTo("Win for Gustavo");
+        assertThat(tennisGame.getScore()).isEqualTo("Win for Heisenberg");
     }
 
     @Test
     void whenPlayer2Scores4PointsWithoutDeuce_thenPlayer2Wins() {
         simulateTennisGame(1, 4);
 
-        assertThat(tennisGame.getScore()).isEqualTo("Win for Heisenberg");
+        assertThat(tennisGame.getScore()).isEqualTo("Win for Gustavo Fring");
     }
 
     private void simulateTennisGame(int player1Points, int player2Points) {
