@@ -1,6 +1,6 @@
-package be.kata.tennis.score;
+package be.kata.tennis.domain.score;
 
-import be.kata.tennis.Players;
+import be.kata.tennis.domain.Players;
 
 public class WinningScore implements Score {
     @Override

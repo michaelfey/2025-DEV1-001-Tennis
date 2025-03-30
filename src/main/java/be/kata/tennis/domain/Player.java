@@ -1,4 +1,4 @@
-package be.kata.tennis;
+package be.kata.tennis.domain;
 
 public class Player {
 

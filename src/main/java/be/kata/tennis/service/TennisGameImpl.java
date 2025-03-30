@@ -1,15 +1,20 @@
-package be.kata.tennis;
+package be.kata.tennis.service;
 
-import be.kata.tennis.score.*;
+import be.kata.tennis.domain.Players;
+import be.kata.tennis.domain.TennisGame;
+import be.kata.tennis.domain.score.*;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
 
+@Service
 public class TennisGameImpl implements TennisGame {
-    private final Players players;
+    private Players players;
 
-    TennisGameImpl(String player1Name, String player2Name) {
+    @Override
+    public void startGame(String player1Name, String player2Name) {
         if (StringUtils.isEmpty(player1Name) || StringUtils.isEmpty(player2Name)) {
             throw new IllegalArgumentException("Both names of player1 and player2 should be provided");
         }
@@ -30,4 +35,5 @@ public class TennisGameImpl implements TennisGame {
     public void scorePoint(String scoringPlayerName) {
         players.scorePoint(scoringPlayerName);
     }
+
 }

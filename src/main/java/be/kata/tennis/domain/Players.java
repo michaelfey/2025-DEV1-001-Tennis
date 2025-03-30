@@ -1,4 +1,4 @@
-package be.kata.tennis;
+package be.kata.tennis.domain;
 
 public class Players {
     private final Player player1;
@@ -30,9 +30,9 @@ public class Players {
     }
 
     public void scorePoint(String playerName) {
-        if (playerName.equals(player1.getName())) {
+        if (player1.getName().equals(playerName)) {
             player1.addPoint();
-        } else if (playerName.equals(player2.getName())) {
+        } else if (player2.getName().equals(playerName)) {
             player2.addPoint();
         } else {
             throw new IllegalArgumentException(String.format("Player with name %s is currently not playing", playerName));

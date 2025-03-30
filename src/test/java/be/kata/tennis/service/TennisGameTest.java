@@ -1,5 +1,6 @@
-package be.kata.tennis;
+package be.kata.tennis.service;
 
+import be.kata.tennis.domain.TennisGame;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -16,39 +17,46 @@ public class TennisGameTest {
 
     @BeforeEach
     void before() {
-        this.tennisGame = new TennisGameImpl(PLAYER_1, PLAYER_2);
+        this.tennisGame = new TennisGameImpl();
+        this.tennisGame.startGame(PLAYER_1, PLAYER_2);
     }
 
     @Test
     void givenPlayer1IsNull_whenGameStarts_thenExceptionIsThrown() {
-        assertThatThrownBy(() -> new TennisGameImpl(null, "player 2"))
+        this.tennisGame = new TennisGameImpl();
+        assertThatThrownBy(() -> this.tennisGame.startGame(null, "player 2"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Both names of player1 and player2 should be provided");
     }
 
     @Test
     void givenPlayer1IsEmpty_whenGameStarts_thenExceptionIsThrown() {
-        assertThatThrownBy(() -> new TennisGameImpl("", "player 2"))
+        this.tennisGame = new TennisGameImpl();
+        assertThatThrownBy(() -> this.tennisGame.startGame("", "player 2"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Both names of player1 and player2 should be provided");
     }
 
     @Test
     void givenPlayer2IsNull_whenGameStarts_thenExceptionIsThrown() {
-        assertThatThrownBy(() -> new TennisGameImpl("player1", null))
+        this.tennisGame = new TennisGameImpl();
+        assertThatThrownBy(() -> this.tennisGame.startGame("player1", null))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Both names of player1 and player2 should be provided");
     }
 
     @Test
     void givenPlayer2IsEmpty_whenGameStarts_thenExceptionIsThrown() {
-        assertThatThrownBy(() -> new TennisGameImpl("player 1", ""))
+        this.tennisGame = new TennisGameImpl();
+        assertThatThrownBy(() -> this.tennisGame.startGame("player 1", ""))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Both names of player1 and player2 should be provided");
     }
 
     @Test
     void givenScorePointCalled_whenPlayerNotFound_thenExceptionIsThrown() {
+        this.tennisGame = new TennisGameImpl();
+        this.tennisGame.startGame(PLAYER_1, PLAYER_2);
         assertThatThrownBy(() -> this.tennisGame.scorePoint("unknown player"))
                 .isInstanceOf(IllegalArgumentException.class)
                 .hasMessage("Player with name unknown player is currently not playing");
