@@ -38,7 +38,7 @@ public class TennisGameTest {
 
     @Test
     void whenPlayer1Scores3Points_ThenScoreIsFortyLove() {
-        simulateTennisGame(2,0);
+        simulateTennisGame(3,0);
 
         assertThat(tennisGame.getScore()).isEqualTo("Forty - Love");
     }

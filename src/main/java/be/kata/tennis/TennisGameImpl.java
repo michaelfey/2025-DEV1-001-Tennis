@@ -29,7 +29,7 @@ public class TennisGameImpl implements TennisGame {
     }
 
     String mapPlayerScoreToText(int playerScore) {
-        String[] scoreText = {"Love", "Fifteen", "Thirty"};
+        String[] scoreText = {"Love", "Fifteen", "Thirty", "Forty"};
         return scoreText[playerScore];
     }
 }
