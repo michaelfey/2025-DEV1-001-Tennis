@@ -1,6 +1,7 @@
 package be.kata.tennis;
 
 public class TennisGameImpl implements TennisGame {
+    private static final String SCORE_BOARD = "%s - %s";
     private String player1Name;
     private String player2Name;
     private int player1Score;
@@ -13,14 +14,14 @@ public class TennisGameImpl implements TennisGame {
 
     @Override
     public String getScore() {
-        String scoreBoard = "%s - %s";
-        if(player1Score == player2Score && player1Score == 3) {
+        if (isDeuce()) {
             return "Deuce";
         }
         String player1Score = mapPlayerScoreToText(this.player1Score);
         String player2Score = mapPlayerScoreToText(this.player2Score);
-        return String.format(scoreBoard, player1Score, player2Score);
+        return String.format(SCORE_BOARD, player1Score, player2Score);
     }
+
 
     @Override
     public void scorePoint(String scoringPlayerName) {
@@ -31,8 +32,12 @@ public class TennisGameImpl implements TennisGame {
         }
     }
 
-    String mapPlayerScoreToText(int playerScore) {
+    private String mapPlayerScoreToText(int playerScore) {
         String[] scoreText = {"Love", "Fifteen", "Thirty", "Forty"};
         return scoreText[playerScore];
+    }
+
+    private boolean isDeuce() {
+        return player1Score == player2Score && player1Score == 3;
     }
 }
