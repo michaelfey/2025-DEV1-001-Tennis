@@ -66,10 +66,10 @@ class TennisControllerIntegrationTest {
 
         mockMvc.perform(post("/api/tennis/point/Hannibal"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Fifteen-Love"));
+                .andExpect(content().string("Fifteen - Love"));
 
         mockMvc.perform(post("/api/tennis/point/Clarice"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("Fifteen-Fifteen"));
+                .andExpect(content().string("Fifteen - Fifteen"));
     }
 }
