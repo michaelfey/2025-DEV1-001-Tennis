@@ -2,14 +2,13 @@ package be.kata.tennis;
 
 public class TennisGameImpl implements TennisGame {
     private static final String SCORE_BOARD = "%s - %s";
-    private String player1Name;
-    private String player2Name;
-    private int player1Score;
-    private int player2Score;
+    private Player player1;
+    private Player player2;
+
 
     TennisGameImpl(String player1Name, String player2Name) {
-        this.player1Name = player1Name;
-        this.player2Name = player2Name;
+        this.player1 = new Player(player1Name);
+        this.player2 = new Player(player2Name);
     }
 
     @Override
@@ -23,30 +22,30 @@ public class TennisGameImpl implements TennisGame {
         if (hasWinner()) {
             return "Win for " + leadingPlayer();
         }
-        String player1Score = mapPlayerScoreToText(this.player1Score);
-        String player2Score = mapPlayerScoreToText(this.player2Score);
+        String player1Score = mapPlayerScoreToText(this.player1.getScore());
+        String player2Score = mapPlayerScoreToText(this.player2.getScore());
         return String.format(SCORE_BOARD, player1Score, player2Score);
     }
 
     private boolean hasWinner() {
-        return Math.max(player1Score, player2Score) >= 4 && Math.abs(player1Score - player2Score) >= 2;
+        return Math.max(player1.getScore(), player2.getScore()) >= 4 && Math.abs(player1.getScore() - player2.getScore()) >= 2;
     }
 
     private boolean hasAdvantage() {
-        return Math.max(player1Score, player2Score) >= 4 && Math.abs(player1Score - player2Score) == 1;
+        return Math.max(player1.getScore(), player2.getScore()) >= 4 && Math.abs(player1.getScore() - player2.getScore()) == 1;
     }
 
     private String leadingPlayer() {
-        return (player1Score > player2Score) ? player1Name : player2Name;
+        return this.player1.isLeading(player2) ? player1.getName() : player2.getName();
     }
 
 
     @Override
     public void scorePoint(String scoringPlayerName) {
-        if (scoringPlayerName.equals(player1Name)) {
-            player1Score++;
-        } else if (scoringPlayerName.equals(player2Name)) {
-            player2Score++;
+        if (scoringPlayerName.equals(player1.getName())) {
+            player1.addPoint();
+        } else if (scoringPlayerName.equals(player2.getName())) {
+            player2.addPoint();
         }
     }
 
@@ -56,6 +55,6 @@ public class TennisGameImpl implements TennisGame {
     }
 
     private boolean isDeuce() {
-        return player1Score == player2Score && player1Score >= 3;
+        return player1.getScore() == player2.getScore() && player1.getScore() >= 3;
     }
 }
