@@ -9,7 +9,7 @@ public class TennisGameImpl implements TennisGame {
 
 
     TennisGameImpl(String player1Name, String player2Name) {
-        if(StringUtils.isEmpty(player1Name) || StringUtils.isEmpty(player2Name)) {
+        if (StringUtils.isEmpty(player1Name) || StringUtils.isEmpty(player2Name)) {
             throw new IllegalArgumentException("Both names of player1 and player2 should be provided");
         }
         this.player1 = new Player(player1Name);
@@ -52,6 +52,7 @@ public class TennisGameImpl implements TennisGame {
         } else if (scoringPlayerName.equals(player2.getName())) {
             player2.addPoint();
         }
+        throw new IllegalArgumentException(String.format("Player with name %s is currently not playing", scoringPlayerName));
     }
 
     private String mapPlayerScoreToText(int playerScore) {

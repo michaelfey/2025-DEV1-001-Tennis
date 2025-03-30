@@ -5,7 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.stream.IntStream;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class TennisGameTest {
 
@@ -49,7 +50,8 @@ public class TennisGameTest {
     @Test
     void givenScorePointCalled_whenPlayerNotFound_thenExceptionIsThrown() {
         assertThatThrownBy(() -> this.tennisGame.scorePoint("unknown player"))
-                .isInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Player with name unknown player is currently not playing");
     }
 
     @Test
