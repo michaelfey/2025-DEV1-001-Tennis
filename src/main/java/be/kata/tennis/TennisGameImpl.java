@@ -23,14 +23,13 @@ public class TennisGameImpl implements TennisGame {
     public void scorePoint(String scoringPlayerName) {
         if (scoringPlayerName.equals(player1Name)) {
             player1Score++;
-        }
-        else if (scoringPlayerName.equals(player2Name)) {
+        } else if (scoringPlayerName.equals(player2Name)) {
             player2Score++;
         }
     }
 
     String mapPlayerScoreToText(int playerScore) {
-        String[] scoreText = {"Love", "Fifteen"};
+        String[] scoreText = {"Love", "Fifteen", "Thirty"};
         return scoreText[playerScore];
     }
 }
