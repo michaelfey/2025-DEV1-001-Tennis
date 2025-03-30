@@ -83,6 +83,16 @@ public class TennisGameTest {
 
     }
 
+    @Test
+    void givenGameIsDeuce_whenPlayer2Scores_thenPlayer2IsInAdvantage() {
+        simulateTennisGame(3, 3);
+
+        tennisGame.scorePoint(PLAYER_2);
+
+        assertThat(tennisGame.getScore()).isEqualTo("Advantage Gustavo Fring");
+
+    }
+
     private void simulateTennisGame(int player1Points, int player2Points) {
         IntStream.range(0, player1Points).forEach(i -> tennisGame.scorePoint(PLAYER_1));
         IntStream.range(0, player2Points).forEach(i -> tennisGame.scorePoint(PLAYER_2));
