@@ -36,6 +36,34 @@ public class TennisGameTest {
         assertThat(tennisGame.getScore()).isEqualTo("Thirty - Love");
     }
 
+    @Test
+    void whenPlayer1Scores3Points_ThenScoreIsFortyLove() {
+        simulateTennisGame(2,0);
+
+        assertThat(tennisGame.getScore()).isEqualTo("Forty - Love");
+    }
+
+    @Test
+    void whenPlayer2Scores1Point_ThenScoreIsLoveFifteen() {
+        simulateTennisGame(0,1);
+
+        assertThat(tennisGame.getScore()).isEqualTo("Love - Fifteen");
+    }
+
+    @Test
+    void whenPlayer2Scores2Points_ThenScoreIsLoveThirty() {
+        simulateTennisGame(2,0);
+
+        assertThat(tennisGame.getScore()).isEqualTo("Love - Thirty");
+    }
+
+    @Test
+    void whenPlayer2Scores3Points_ThenScoreIsLoveForty() {
+        simulateTennisGame(2,0);
+
+        assertThat(tennisGame.getScore()).isEqualTo("Love - Forty");
+    }
+
     private void simulateTennisGame(int player1Points, int player2Points) {
         for (int i = 0; i < player1Points; i++) this.tennisGame.scorePoint(PLAYER_1);
         for (int i = 0; i < player2Points; i++) this.tennisGame.scorePoint(PLAYER_2);
