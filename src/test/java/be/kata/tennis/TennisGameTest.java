@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 
 import java.util.stream.IntStream;
 
-import static org.assertj.core.api.Assertions.assertThat;
-import static org.assertj.core.api.Assertions.assertThatThrownBy;
+import static org.assertj.core.api.Assertions.*;
 
 public class TennisGameTest {
 
@@ -22,31 +21,35 @@ public class TennisGameTest {
     @Test
     void givenPlayer1IsNull_whenGameStarts_thenExceptionIsThrown() {
         assertThatThrownBy(() -> new TennisGameImpl(null, "player 2"))
-                .hasCauseInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Both names of player1 and player2 should be provided");
     }
 
     @Test
     void givenPlayer1IsEmpty_whenGameStarts_thenExceptionIsThrown() {
         assertThatThrownBy(() -> new TennisGameImpl("", "player 2"))
-                .hasCauseInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Both names of player1 and player2 should be provided");
     }
 
     @Test
     void givenPlayer2IsNull_whenGameStarts_thenExceptionIsThrown() {
         assertThatThrownBy(() -> new TennisGameImpl("player1", null))
-                .hasCauseInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Both names of player1 and player2 should be provided");
     }
 
     @Test
     void givenPlayer2IsEmpty_whenGameStarts_thenExceptionIsThrown() {
         assertThatThrownBy(() -> new TennisGameImpl("player 1", ""))
-                .hasCauseInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class)
+                .hasMessage("Both names of player1 and player2 should be provided");
     }
 
     @Test
     void givenScorePointCalled_whenPlayerNotFound_thenExceptionIsThrown() {
         assertThatThrownBy(() -> this.tennisGame.scorePoint("unknown player"))
-                .hasCauseInstanceOf(IllegalArgumentException.class);
+                .isInstanceOf(IllegalArgumentException.class);
     }
 
     @Test

@@ -1,5 +1,7 @@
 package be.kata.tennis;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class TennisGameImpl implements TennisGame {
     private static final String SCORE_BOARD = "%s - %s";
     private Player player1;
@@ -7,6 +9,9 @@ public class TennisGameImpl implements TennisGame {
 
 
     TennisGameImpl(String player1Name, String player2Name) {
+        if(StringUtils.isEmpty(player1Name) || StringUtils.isEmpty(player2Name)) {
+            throw new IllegalArgumentException("Both names of player1 and player2 should be provided");
+        }
         this.player1 = new Player(player1Name);
         this.player2 = new Player(player2Name);
     }
