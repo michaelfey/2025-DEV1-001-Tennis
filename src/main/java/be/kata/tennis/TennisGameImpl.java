@@ -20,9 +20,16 @@ public class TennisGameImpl implements TennisGame {
         if (hasAdvantage()) {
             return "Advantage " + leadingPlayer();
         }
+        if (hasWinner()) {
+            return "Win for " + leadingPlayer();
+        }
         String player1Score = mapPlayerScoreToText(this.player1Score);
         String player2Score = mapPlayerScoreToText(this.player2Score);
         return String.format(SCORE_BOARD, player1Score, player2Score);
+    }
+
+    private boolean hasWinner() {
+        return Math.max(player1Score, player2Score) >= 4 && Math.abs(player1Score - player2Score) >= 2;
     }
 
     private boolean hasAdvantage() {

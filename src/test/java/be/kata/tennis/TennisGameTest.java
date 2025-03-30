@@ -101,6 +101,15 @@ public class TennisGameTest {
         assertThat(tennisGame.getScore()).isEqualTo("Deuce");
     }
 
+    @Test
+    void givenPlayer1HasAdvantage_whenPlayer1Scores_thenPlayer1Wins() {
+        simulateTennisGame(4, 3);
+
+        tennisGame.scorePoint(PLAYER_1);
+
+        assertThat(tennisGame.getScore()).isEqualTo("Win for Heisenberg");
+    }
+
     private void simulateTennisGame(int player1Points, int player2Points) {
         IntStream.range(0, player1Points).forEach(i -> tennisGame.scorePoint(PLAYER_1));
         IntStream.range(0, player2Points).forEach(i -> tennisGame.scorePoint(PLAYER_2));
