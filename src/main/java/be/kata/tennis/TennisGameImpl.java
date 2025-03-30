@@ -14,21 +14,9 @@ public class TennisGameImpl implements TennisGame {
     @Override
     public String getScore() {
         String scoreBoard = "%s - %s";
-        String formattedPlayer1Score = "";
-        String formattedPlayer2Score = "";
-        if(player1Score == 0) {
-            formattedPlayer1Score = "Love";
-        }
-        if(player2Score == 0) {
-            formattedPlayer2Score = "Love";
-        }
-        if(player1Score == 1) {
-            formattedPlayer1Score = "Fifteen";
-        }
-        if(player2Score == 1) {
-            formattedPlayer2Score = "Fifteen";
-        }
-        return String.format(scoreBoard, formattedPlayer1Score, formattedPlayer2Score);
+        String player1Score = mapPlayerScoreToText(this.player1Score);
+        String player2Score = mapPlayerScoreToText(this.player2Score);
+        return String.format(scoreBoard, player1Score, player2Score);
     }
 
     @Override
@@ -39,5 +27,10 @@ public class TennisGameImpl implements TennisGame {
         else if (scoringPlayerName.equals(player2Name)) {
             player2Score++;
         }
+    }
+
+    String mapPlayerScoreToText(int playerScore) {
+        String[] scoreText = {"Love", "Fifteen"};
+        return scoreText[playerScore];
     }
 }
