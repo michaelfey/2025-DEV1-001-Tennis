@@ -64,6 +64,13 @@ public class TennisGameTest {
         assertThat(tennisGame.getScore()).isEqualTo("Love - Forty");
     }
 
+    @Test
+    void whenBothPlayersReach3points_thenScoreIsDeuce() {
+        simulateTennisGame(3,3);
+        assertThat(tennisGame.getScore()).isEqualTo("Deuce");
+
+    }
+
     private void simulateTennisGame(int player1Points, int player2Points) {
         for (int i = 0; i < player1Points; i++) this.tennisGame.scorePoint(PLAYER_1);
         for (int i = 0; i < player2Points; i++) this.tennisGame.scorePoint(PLAYER_2);
