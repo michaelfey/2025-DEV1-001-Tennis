@@ -16,7 +16,19 @@ public class TennisGameTest {
     @Test
     void givenScoreIsLoveLove_whenPlayer1Scores_ThenScoreIsFifteenLove() {
         TennisGame tennisGame = new TennisGameImpl("Heisenberg", "Gustavo Fring");
+
         tennisGame.scorePoint("Heisenberg");
+
         assertThat(tennisGame.getScore()).isEqualTo("Fifteen - Love");
+    }
+
+    @Test
+    void givenScoreIsFifteenLove_whenPlayer1Scores_ThenScoreIsThirtyLove() {
+        TennisGame tennisGame = new TennisGameImpl("Heisenberg", "Gustavo Fring");
+        tennisGame.scorePoint("Heisenberg");
+
+        tennisGame.scorePoint("Heisenberg");
+
+        assertThat(tennisGame.getScore()).isEqualTo("Thirty - Love");
     }
 }
