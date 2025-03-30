@@ -20,7 +20,7 @@ public class TennisGameImpl implements TennisGame {
     public String getScore() {
         List<Score> scores = Arrays.asList(new AdvantageScore(), new WinningScore(), new DeuceScore(), new NumericScore());
         Score currentScore = scores.stream()
-                .filter(scoreState -> scoreState.test(players))
+                .filter(score -> score.test(players))
                 .findFirst()
                 .orElseThrow(() -> new IllegalStateException("No score found"));
         return currentScore.getValue(players);
