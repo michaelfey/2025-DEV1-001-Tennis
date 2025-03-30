@@ -9,6 +9,6 @@ public class TennisGameTest {
     @Test
     void whenGameStarted_thenScoreShouldBeLoveLove() {
         TennisGame tennisGame = new TennisGameImpl("Heisenberg", "Gustavo Fring");
-        assertThat(tennisGame.getScore()).isEqualTo("Love-Love");
+        assertThat(tennisGame.getScore()).isEqualTo("Love - Love");
     }
 }

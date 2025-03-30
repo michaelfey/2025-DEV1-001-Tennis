@@ -7,4 +7,9 @@ public class TennisGameImpl implements TennisGame {
         this.player1Name = player1Name;
         this.player2Name = player1Name;
     }
+
+    @Override
+    public String getScore() {
+        return "Love - Love";
+    }
 }
