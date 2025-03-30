@@ -90,7 +90,15 @@ public class TennisGameTest {
         tennisGame.scorePoint(PLAYER_2);
 
         assertThat(tennisGame.getScore()).isEqualTo("Advantage Gustavo Fring");
+    }
 
+    @Test
+    void givenPlayer1HasAdvantage_whenPlayer2Scores_thenGameIsDeuce() {
+        simulateTennisGame(4, 3);
+
+        tennisGame.scorePoint(PLAYER_2);
+
+        assertThat(tennisGame.getScore()).isEqualTo("Deuce");
     }
 
     private void simulateTennisGame(int player1Points, int player2Points) {
