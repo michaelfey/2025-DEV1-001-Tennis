@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.stream.IntStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.assertj.core.api.Assertions.assertThatThrownBy;
 
 public class TennisGameTest {
 
@@ -16,6 +17,36 @@ public class TennisGameTest {
     @BeforeEach
     void before() {
         this.tennisGame = new TennisGameImpl(PLAYER_1, PLAYER_2);
+    }
+
+    @Test
+    void givenPlayer1IsNull_whenGameStarts_thenExceptionIsThrown() {
+        assertThatThrownBy(() -> new TennisGameImpl(null, "player 2"))
+                .hasCauseInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void givenPlayer1IsEmpty_whenGameStarts_thenExceptionIsThrown() {
+        assertThatThrownBy(() -> new TennisGameImpl("", "player 2"))
+                .hasCauseInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void givenPlayer2IsNull_whenGameStarts_thenExceptionIsThrown() {
+        assertThatThrownBy(() -> new TennisGameImpl("player1", null))
+                .hasCauseInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void givenPlayer2IsEmpty_whenGameStarts_thenExceptionIsThrown() {
+        assertThatThrownBy(() -> new TennisGameImpl("player 1", ""))
+                .hasCauseInstanceOf(IllegalArgumentException.class);
+    }
+
+    @Test
+    void givenScorePointCalled_whenPlayerNotFound_thenExceptionIsThrown() {
+        assertThatThrownBy(() -> this.tennisGame.scorePoint("unknown player"))
+                .hasCauseInstanceOf(IllegalArgumentException.class);
     }
 
     @Test
