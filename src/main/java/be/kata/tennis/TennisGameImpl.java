@@ -17,6 +17,9 @@ public class TennisGameImpl implements TennisGame {
         if (isDeuce()) {
             return "Deuce";
         }
+        if (player1Score >= 3 && player2Score >= 3 && player1Score > player2Score) {
+            return "Advantage " + player1Name;
+        }
         String player1Score = mapPlayerScoreToText(this.player1Score);
         String player2Score = mapPlayerScoreToText(this.player2Score);
         return String.format(SCORE_BOARD, player1Score, player2Score);
