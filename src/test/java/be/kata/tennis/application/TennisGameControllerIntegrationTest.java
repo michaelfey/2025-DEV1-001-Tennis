@@ -34,16 +34,17 @@ class TennisGameControllerIntegrationTest {
                         .param("player2", "Clarice")
                 )
                 .andExpect(status().isBadRequest())
-                .andExpect(content().string("error"));
+                .andExpect(content().string("Something went wrong: Required request parameter 'player1' for method parameter type String is not present"));
     }
 
     @Test
     void shouldThrowError_whenGameIsStartedWithEmptyPlayerParams() throws Exception {
-        mockMvc.perform(post("/api/tennis/new-game")
+        mockMvc.perform(post("/api/v1/new-game")
                         .param("player1", "")
                         .param("player2", "")
                 )
-                .andExpect(status().isBadRequest());
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("Something went wrong: Both names of player1 and player2 should be provided"));
     }
 
     @Test
