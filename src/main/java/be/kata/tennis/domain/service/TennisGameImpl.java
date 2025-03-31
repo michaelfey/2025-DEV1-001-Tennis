@@ -1,4 +1,4 @@
-package be.kata.tennis.service;
+package be.kata.tennis.domain.service;
 
 import be.kata.tennis.domain.Players;
 import be.kata.tennis.domain.score.AdvantageScore;

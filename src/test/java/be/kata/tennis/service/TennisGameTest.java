@@ -1,5 +1,7 @@
 package be.kata.tennis.service;
 
+import be.kata.tennis.domain.service.TennisGame;
+import be.kata.tennis.domain.service.TennisGameImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
