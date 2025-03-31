@@ -1,0 +1,81 @@
+openapi: 3.0.3
+info:
+  title: Tennis Game API
+  description: API for managing tennis game scoring
+  version: 1.0.0
+servers:
+  - url: http://localhost:8080/api/tennis
+    description: Local server
+
+paths:
+  /api/v1/new-game:
+    post:
+      tags:
+        - tennis-game
+      summary: Start a new tennis game
+      parameters:
+        - in: query
+          name: player1
+          required: true
+          schema:
+            type: string
+          description: Name of player one
+        - in: query
+          name: player2
+          required: true
+          schema:
+            type: string
+          description: Name of player two
+      responses:
+        '200':
+          description: Game successfully created
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /api/v1/point/{playerName}:
+    post:
+      tags:
+        - tennis-game
+      summary: Player scores a point
+      parameters:
+        - in: path
+          name: playerName
+          required: true
+          schema:
+            type: string
+          description: Name of the scoring player
+      responses:
+        '200':
+          description: Updated score after point scored
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /api/v1/score:
+    get:
+      tags:
+        - tennis-game
+      summary: Get current score
+      responses:
+        '200':
+          description: Current game score
+          content:
+            text/plain:
+              schema:
+                type: string
+
+  /api/v1/reset:
+    post:
+      tags:
+        - tennis-game
+      summary: Reset the current game
+      responses:
+        '200':
+          description: Game reset confirmation
+          content:
+            text/plain:
+              schema:
+                type: string

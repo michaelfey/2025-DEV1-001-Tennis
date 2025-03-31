@@ -20,12 +20,12 @@ class TennisControllerIntegrationTest {
 
     @Test
     void shouldStartGame() throws Exception {
-        mockMvc.perform(post("/api/tennis/new-game")
+        mockMvc.perform(post("/api/v1/new-game")
                         .param("player1", "Hannibal")
                         .param("player2", "Clarice")
                 )
                 .andExpect(status().isOk())
-                .andExpect(content().string("Game started between Hannibal and Clarice"));
+                .andExpect(content().string("Tennis game started between Hannibal and Clarice"));
     }
 
     @Test
