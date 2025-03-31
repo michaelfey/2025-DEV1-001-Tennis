@@ -66,16 +66,3 @@ paths:
             text/plain:
               schema:
                 type: string
-
-  /api/v1/reset:
-    post:
-      tags:
-        - tennis-game
-      summary: Reset the current game
-      responses:
-        '200':
-          description: Game reset confirmation
-          content:
-            text/plain:
-              schema:
-                type: string

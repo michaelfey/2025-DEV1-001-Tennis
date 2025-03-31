@@ -27,11 +27,6 @@ public class TennisGameController implements TennisGameApi {
     }
 
     @Override
-    public ResponseEntity<String> _apiV1ResetPost() {
-        return null;
-    }
-
-    @Override
     public ResponseEntity<String> _apiV1ScoreGet() {
         return ResponseEntity.ok(this.tennisGame.getScore());
     }
