@@ -186,7 +186,13 @@ public class TennisGameTest {
     }
 
     private void simulateTennisGame(int player1Points, int player2Points) {
-        IntStream.range(0, player1Points).forEach(i -> tennisGame.scorePoint(PLAYER_1));
-        IntStream.range(0, player2Points).forEach(i -> tennisGame.scorePoint(PLAYER_2));
+        if (player1Points <= player2Points) {
+            IntStream.range(0, player1Points).forEach(i -> tennisGame.scorePoint(PLAYER_1));
+            IntStream.range(0, player2Points).forEach(i -> tennisGame.scorePoint(PLAYER_2));
+        } else {
+            IntStream.range(0, player2Points).forEach(i -> tennisGame.scorePoint(PLAYER_2));
+            IntStream.range(0, player1Points).forEach(i -> tennisGame.scorePoint(PLAYER_1));
+        }
+
     }
 }

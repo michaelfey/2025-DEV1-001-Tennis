@@ -84,7 +84,7 @@ class TennisGameControllerIntegrationTest {
     }
 
     @Test
-    void shouldThrowConflictError_whenTryingToScoreWhenTheIsAlreadyFinished() throws Exception {
+    void shouldThrowConflictError_whenTryingToScoreWhenTheGameIsAlreadyFinished() throws Exception {
         mockMvc.perform(post("/api/v1/new-game")
                         .param("player1", "Hannibal")
                         .param("player2", "Clarice")
@@ -100,8 +100,6 @@ class TennisGameControllerIntegrationTest {
         mockMvc.perform(post("/api/v1/point/Hannibal"))
                 .andExpect(status().isConflict())
                 .andExpect(content().string("Something went wrong: The game is already finished, please start a new game"));
-
-
 
     }
 }
