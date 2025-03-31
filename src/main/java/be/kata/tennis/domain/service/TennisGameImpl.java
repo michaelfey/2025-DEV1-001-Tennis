@@ -32,11 +32,10 @@ public class TennisGameImpl implements TennisGame {
 
     private Score getCurrentScore() {
         List<Score> scores = Arrays.asList(new AdvantageScore(), new WinningScore(), new DeuceScore(), new NumericScore());
-        Score currentScore = scores.stream()
+        return scores.stream()
                 .filter(score -> score.test(players))
                 .findFirst()
                 .orElseThrow(() -> new IllegalStateException("No score found"));
-        return currentScore;
     }
 
     @Override
