@@ -1,0 +1,46 @@
+###
+POST http://localhost:8080/tennis-game/api/v1/new-game?
+    player1=Hannibal&
+    player2=Clarice
+
+<> 2025-04-01T001846.200.txt
+<> 2025-04-01T001712.200.txt
+<> 2025-04-01T001646.404.html
+
+###
+POST http://localhost:8080/tennis-game/api/v1/point/Hannibal
+
+<> 2025-04-01T001852.200.txt
+<> 2025-04-01T001831.200.txt
+<> 2025-04-01T001825.200.txt
+<> 2025-04-01T001818.200.txt
+<> 2025-04-01T001809.200.txt
+<> 2025-04-01T001806.200.txt
+
+###
+POST http://localhost:8080/tennis-game/api/v1/point/Clarice
+
+<> 2025-04-01T001842.409.txt
+<> 2025-04-01T001839.200.txt
+<> 2025-04-01T001833.200.txt
+<> 2025-04-01T001829.200.txt
+<> 2025-04-01T001827.200.txt
+<> 2025-04-01T001819.200.txt
+<> 2025-04-01T001815.200.txt
+<> 2025-04-01T001811.200.txt
+<> 2025-04-01T001738.404.html
+
+###
+GET http://localhost:8080/tennis-game/api/v1/score
+
+<> 2025-04-01T001837.200.txt
+<> 2025-04-01T001835.200.txt
+<> 2025-04-01T001813.200.txt
+<> 2025-04-01T001620.409.txt
+<> 2025-04-01T000928.500.txt
+<> 2025-03-31T223516.404.json
+<> 2025-03-31T223345.404.json
+<> 2025-03-31T223326.404.html
+
+###
+POST http://localhost:8080/api/tennis/reset
