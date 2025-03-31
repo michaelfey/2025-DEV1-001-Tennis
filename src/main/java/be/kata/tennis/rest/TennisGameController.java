@@ -1,7 +1,7 @@
 package be.kata.tennis.rest;
 
 import be.kata.tennis.api.TennisGameApi;
-import be.kata.tennis.domain.service.TennisGame;
+import be.kata.tennis.domain.port.TennisGame;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 

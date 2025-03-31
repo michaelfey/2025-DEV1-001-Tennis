@@ -1,4 +1,4 @@
-package be.kata.tennis.domain.service;
+package be.kata.tennis.domain.port;
 
 public interface TennisGame {
 

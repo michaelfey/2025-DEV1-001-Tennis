@@ -6,6 +6,7 @@ import be.kata.tennis.domain.model.score.DeuceScore;
 import be.kata.tennis.domain.model.score.NumericScore;
 import be.kata.tennis.domain.model.score.Score;
 import be.kata.tennis.domain.model.score.WinningScore;
+import be.kata.tennis.domain.port.TennisGame;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
