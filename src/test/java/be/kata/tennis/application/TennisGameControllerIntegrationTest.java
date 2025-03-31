@@ -13,7 +13,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-class TennisControllerIntegrationTest {
+class TennisGameControllerIntegrationTest {
 
     @Autowired
     private MockMvc mockMvc;
@@ -26,6 +26,15 @@ class TennisControllerIntegrationTest {
                 )
                 .andExpect(status().isOk())
                 .andExpect(content().string("Tennis game started between Hannibal and Clarice"));
+    }
+
+    @Test
+    void shouldThrowErrorWhenStartingGameWithoutPlayer1Param() throws Exception {
+        mockMvc.perform(post("/api/v1/new-game")
+                        .param("player2", "Clarice")
+                )
+                .andExpect(status().isBadRequest())
+                .andExpect(content().string("error"));
     }
 
     @Test
