@@ -1,11 +1,11 @@
 package be.kata.tennis.domain.service;
 
-import be.kata.tennis.domain.Players;
-import be.kata.tennis.domain.score.AdvantageScore;
-import be.kata.tennis.domain.score.DeuceScore;
-import be.kata.tennis.domain.score.NumericScore;
-import be.kata.tennis.domain.score.Score;
-import be.kata.tennis.domain.score.WinningScore;
+import be.kata.tennis.domain.model.Players;
+import be.kata.tennis.domain.model.score.AdvantageScore;
+import be.kata.tennis.domain.model.score.DeuceScore;
+import be.kata.tennis.domain.model.score.NumericScore;
+import be.kata.tennis.domain.model.score.Score;
+import be.kata.tennis.domain.model.score.WinningScore;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
