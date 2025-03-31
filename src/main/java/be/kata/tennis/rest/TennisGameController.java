@@ -33,6 +33,6 @@ public class TennisGameController implements TennisGameApi {
 
     @Override
     public ResponseEntity<String> _apiV1ScoreGet() {
-        return null;
+        return ResponseEntity.ok(this.tennisGame.getScore());
     }
 }
