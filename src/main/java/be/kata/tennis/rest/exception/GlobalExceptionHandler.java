@@ -18,6 +18,13 @@ public class GlobalExceptionHandler {
         logger.error(ex.getMessage(), ex);
         return new ResponseEntity<>("Something went wrong: " + ex.getMessage(), HttpStatus.BAD_REQUEST);
     }
+
+    @ExceptionHandler({IllegalStateException.class})
+    public ResponseEntity<String> handleStateExceptions(Exception ex) {
+        logger.error(ex.getMessage(), ex);
+        return new ResponseEntity<>("Something went wrong: " + ex.getMessage(), HttpStatus.CONFLICT);
+    }
+
     @ExceptionHandler(Exception.class)
     public ResponseEntity<String> handleAllExceptions(Exception ex) {
         logger.error(ex.getMessage(), ex);
