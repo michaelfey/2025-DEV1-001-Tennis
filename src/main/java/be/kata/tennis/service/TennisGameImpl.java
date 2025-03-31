@@ -36,6 +36,9 @@ public class TennisGameImpl implements TennisGame {
 
     @Override
     public void scorePoint(String scoringPlayerName) {
+        if(players == null){
+            throw new IllegalStateException("Game has not started yet, please start a new game");
+        }
         players.scorePoint(scoringPlayerName);
     }
 

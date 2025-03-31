@@ -14,7 +14,6 @@ public class TennisGameController implements TennisGameApi {
         this.tennisGame = tennisGame;
     }
 
-
     @Override
     public ResponseEntity<String> _apiV1NewGamePost(String player1, String player2) {
         this.tennisGame.startGame(player1, player2);
@@ -23,7 +22,8 @@ public class TennisGameController implements TennisGameApi {
 
     @Override
     public ResponseEntity<String> _apiV1PointPlayerNamePost(String playerName) {
-        return null;
+        this.tennisGame.scorePoint(playerName);
+        return ResponseEntity.ok(this.tennisGame.getScore());
     }
 
     @Override
