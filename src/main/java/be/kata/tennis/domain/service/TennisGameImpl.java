@@ -27,6 +27,9 @@ public class TennisGameImpl implements TennisGame {
 
     @Override
     public String getScore() {
+        if (players == null) {
+            throw new IllegalStateException("Game has not started yet, please start a new game");
+        }
         Score currentScore = getCurrentScore();
         return currentScore.getValue(players);
     }

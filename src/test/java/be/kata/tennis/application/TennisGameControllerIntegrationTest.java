@@ -102,4 +102,11 @@ class TennisGameControllerIntegrationTest {
                 .andExpect(content().string("Something went wrong: The game is already finished, please start a new game"));
 
     }
+
+    @Test
+    void shouldThrowConflictError_whenTryingToGetScoreWhenTheGameHasNotStartedYet() throws Exception {
+        mockMvc.perform(get("/api/v1/score"))
+                .andExpect(status().isConflict());
+
+    }
 }
