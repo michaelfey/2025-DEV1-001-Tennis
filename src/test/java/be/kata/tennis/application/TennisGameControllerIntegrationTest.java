@@ -29,7 +29,7 @@ class TennisGameControllerIntegrationTest {
     }
 
     @Test
-    void shouldThrowErrorWhenStartingGameWithoutPlayer1Param() throws Exception {
+    void shouldThrowError_whenStartingGameWithoutPlayer1Param() throws Exception {
         mockMvc.perform(post("/api/v1/new-game")
                         .param("player2", "Clarice")
                 )
@@ -67,7 +67,7 @@ class TennisGameControllerIntegrationTest {
     }
 
     @Test
-    void shouldUpdateScoreWhenPlayerScores() throws Exception {
+    void shouldUpdateScore_whenPlayerScores() throws Exception {
         mockMvc.perform(post("/api/v1/new-game")
                         .param("player1", "Hannibal")
                         .param("player2", "Clarice")
@@ -81,5 +81,27 @@ class TennisGameControllerIntegrationTest {
         mockMvc.perform(post("/api/v1/point/Clarice"))
                 .andExpect(status().isOk())
                 .andExpect(content().string("Fifteen - Fifteen"));
+    }
+
+    @Test
+    void shouldThrowConflictError_whenTryingToScoreWhenTheIsAlreadyFinished() throws Exception {
+        mockMvc.perform(post("/api/v1/new-game")
+                        .param("player1", "Hannibal")
+                        .param("player2", "Clarice")
+                )
+                .andExpect(status().isOk());
+
+        mockMvc.perform(post("/api/v1/point/Hannibal"));
+        mockMvc.perform(post("/api/v1/point/Hannibal"));
+        mockMvc.perform(post("/api/v1/point/Hannibal"));
+        mockMvc.perform(post("/api/v1/point/Hannibal"));
+        mockMvc.perform(post("/api/v1/point/Hannibal"));
+
+        mockMvc.perform(post("/api/v1/point/Hannibal"))
+                .andExpect(status().isConflict())
+                .andExpect(content().string("Something went wrong: The game is already finished, please start a new game"));
+
+
+
     }
 }
